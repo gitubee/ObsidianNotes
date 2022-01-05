@@ -240,3 +240,50 @@ equation of the form
 ## An application to the semantics of programming languages
 
 We shall see in this section how the first Recursion theorem helps to resolve a problem in the semantics of computer programming languages - the area that deals with the question of giving meaning to programs.
+
+Suppose that $\tau(\textbf{x})$ is an expression of L such that whenever the variables x are given particular values a, then $\tau(\textbf{a})$ can be unambiguously evaluated according to the semantics of L.
+If we now take a function symbol f of L that does not occur in $\tau$, then:
+> (4.1) $f(\textbf{x})=\tau(\textbf{x})$ is a simple program for a function $f_{\tau}$
+
+Suppose now that $\tau$ is an expression in which the symbol f does occur. We indicate this by writing $\tau(f,x)$. Then the program (4.1) becomes:
+> (4.2) $f(\textbf{x})=\tau(f,\textbf{x})$ 
+
+is now what is called a recursive program
+
+The fundamental problem with any recursive program is: **how do we give it a precise meaning?** It can hardly be called a program  until this question is settled. 
+There are basically two approaches that provide an answer to this 
+question:
+1. The computational approach.
+2. The fixed point approach
+
+### The computational approach
+This is best described by giving some examples. Consider the recursive program:
+$$
+(4.3)\qquad f(x)=\bigg\{\begin{array}{ll}1&if\;x=0\\2f(x-1)&if\;x>0\end{array}
+$$
+Consider, for instance, the recursive program:
+$$
+(4.4)\qquad f(x,y)=\bigg\{\begin{array}{ll}1&if\;x=0\\f(x-1,f(x,y))&if\;x>0\end{array}
+$$
+Suppose that we try formally to evaluate $f(1,0)$. We have:
+$(4.5)\qquad f(1,0)\simeq f(0,f(1,0))$
+But now there is a choice of occurrences of f for which to substitute $\tau(f,\textbf{x})$.
+Choosing the leftmost one and simplifying we have :
+$f(1,0)\simeq f(0,f(1,0))=1$
+If, on the other hand, we substitute for the rightmost one, we obtain from:
+$f(1,0)\simeq f(0,f(1,0))\simeq f(0,f(0,f(1,0)))\dots$
+A computation rule is a rule R that specifies how to proceed when confronted with such a choice of possible substitutions during any formal evaluation procedure. Program (4.4) were 'leftmost' (LM) and 'rightmost' (RM). There are many other possible rules.
+
+For any computation rule R, and recursive program $f(\textbf{x})=\tau(f,textbf{x})$ we define the function $f_{\tau,R}$ by: $f_{\tau,R}(\textbf{a})$ is the value obtained when $f(\textbf{a})$ is formally evaluated using the rule R.
+The above example demonstrates that different computation rules may give different meanings to any particular recursive program.Moreover, for any rule R, there is the question of determining in what sense, if any, the function $f_{\tau,R}$ satisfies the equation:
+> $f(\textbf{x})\simeq \tau(f,\textbf{x})$
+
+### The fixed point approach
+The fixed point approach, using the first Recursion theorem, avoids 
+these problems, and in fact sheds light on both of them, as we shall see.
+An expression $\tau(f,textbf{x})$ of L gives rise to an 
+operator $\varPhi:\mathscr{F}_{n}\rightarrow\mathscr{F}_{n}$ by setting:
+$$\varPhi(g)(\textbf{x})\simeq\tau(g,textbf{x})$$
+for any $g\in\mathscr{F}_{n}$. 
+ Moreover, in most programming languages the finite and 
+explicit nature of the expression $\tau(f,textbf{x})$ ensures that $\varPhi$ is a recursive operator.
