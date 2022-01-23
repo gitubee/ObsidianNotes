@@ -2,8 +2,8 @@
 
 We set the following notation, which will be used throughout this book:
 > K   a perfect field, every algebraic  extension of K is separable.
-> $\overline(K)$    a fixed algebraic closure of K.
-> $G_{\oveline{K}/K}$    the Galois group of $\oveline{K}/K$.
+> $\overline{K}$    a fixed algebraic closure of K.
+> $G_{\overline{K}/K}$    the Galois group of $\overline{K}/K$.
 
 The restriction on K that K is a perfect field need not concern us unduly.
 
