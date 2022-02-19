@@ -48,3 +48,5 @@ def __hash__(self):
  If a class does not define an __eq__() method it should not define a __hash__() operation either, if it defines __eq__() but not __hash__(), its instances will not be usable as items in hashable collections.
  If a class defines **mutable objects** and implements an __eq__() method, it should not implement __hash__(), since __hash__() requires that a key’s hash value is immutable
  
+ In set, python use \_\_eq\_\_ to compare elements.
+ 
